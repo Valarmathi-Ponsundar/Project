@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sign up Page</title>
+	<link rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body{
+
+ /* Background image edit line */
+	background-image: url('b3.jpg');
+   background-attachment: fixed;
+   background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+ 
+}
+.div{
+	overflow: hidden;
+	margin-left: 300px;
+	background-color: transparent;
+	opacity: 0.9;
+	width: 800px;
+	height: 750px;
+	position: relative;	
+	border-radius: 40px;
+}
+.form{
+	border-radius: 40px;
+	margin-top: 1px;
+	background-color: #fbe2ba;
+	text-align: center;
+	height: 690px;
+	color: black;
+	opacity: 85%;
+}
+input{
+	margin-top: 5px;
+	border-radius: 15px;
+	width: 450px;
+	height: 45px;
+	
+}
+input[placeholder]{
+	padding: 4px 3px;
+	font-size: 18px;
+}
+input[type=radio]{
+	width: 35px;
+	height: 20px;
+	margin: 0px;
+}
+label{
+	color: blue;
+}
+input[type=submit]{
+	background-color: #0F7DC2;
+	margin-top: 10px; 
+	width: 120px;
+	height: 50px;
+	font-size: 18px;
+	color: white;
+	border: none;
+}
+input[type=submit]:hover{
+	background-color: #3B5998;
+}
+input[type='date']:after{
+  content: attr(placeholder)
+}
+textarea{
+	resize: none;
+	margin-top: 5px;
+	border-radius: 12px;
+	width: 450px;
+	height: 45px;
+	border:2px solid black;
+	font-size: 20px;
+	padding: 8px 3px;
+}
+i{
+	float: right;
+	margin-right: 40px;
+	margin-top: 20px;
+	
+}
+input[type=checkbox]{
+	width: 35px;
+	height: 20px;
+}
+span{
+	color: blue;
+}
+select{
+	margin-top: 5px;
+	border:2px solid black;
+	border-radius: 15px;
+	width: 460px;
+	height: 55px;
+	font-size: 18px;
+}
+</style>
+</head>
+<body >
+<div class="div">
+		<form class="form" name="up_form" action="dbdata.php" method="POST" onsubmit="return validateemail(),matchpass(),validateform();">
+			<h2><a href="m-login.php"><i class="fa fa-times" aria-hidden="true"></i></a></h2>
+			<br><h1 style="margin-top: 3px;margin-left: 30px;color: red;">Sign Up </h1>
+		<input type="text" name="name" placeholder="Name"  required ><br>
+		<input type="text" name="rollno" placeholder="Roll No" required><br>
+		<input type="email" name="s_email" placeholder="E-Mail" required ><br>
+		<input type="password" name="s_password1" placeholder="Password"  ><br>
+		<input type="password" name="s_password2"placeholder="Conform-Password" ><br>
+		<input type="mobile" name="mobileno" placeholder="Mobile" pattern="[0-9]{10}" required><br>
+		<input placeholder="Date of Birth &ensp;"  type="date" name="dob" required><br>
+		<select name="s_vaccines" id="s_vaccines" required>
+    <option value="">--Select College Name--</option>
+    <option >Muthayammal Engineering College</option>
+    <option >Muthayammal College of Engineering</option>
+  </select>
+	<br>
+		<input type="checkbox" required>I accept the <span>Terms of Use</span> & <span>Privacy Policy</span><br>
+		<input type="submit" name="submit" value="Sign Up"><br>
+		</form>
+	</div>
+</body>
+
+
+<!--E-Mail Validation-->
+<script>  
+function validateemail()  
+{  
+var x=document.up_form.s_email.value;  
+var atposition=x.indexOf("@");  
+var dotposition=x.lastIndexOf(".");  
+if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){  
+  alert("Please enter a valid e-mail address \n atpostion:"+atposition+"\n dotposition:"+dotposition);  
+  return false;  
+  }  
+}  
+</script>  
+
+<!--Password Validation-->
+<script type="text/javascript">
+function matchpass(){
+var firstpassword=document.up_form.s_password1.value;
+var secondpassword=document.up_form.s_password2.value;
+
+if(firstpassword==secondpassword){
+return true;
+}
+else{
+alert("Your password and conform password must be same!");
+return false;
+}
+}
+</script>
+
+<!--Password & Address Validation-->
+<script>  
+function validateform()
+{  
+var address=document.up_form.c_add.value;  
+var password1=document.up_form.s_password1.value;
+var password2=document.up_form.s_password2.value;  
+  
+if (address==null)
+{  
+  alert(" Your address should not be blank");  
+  return false;  
+}
+
+else if(password1.length<6 || password2.length<6){  
+  alert("Password must be at least 6 characters long.");  
+  return false;  
+  }  
+
+}  
+</script>  
+
+</html>
